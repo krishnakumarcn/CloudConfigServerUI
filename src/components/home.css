@@ -14,12 +14,21 @@
   margin-top: 10px;
 }
 
+
 .card-item {
-  margin: 8px 8px 8px 0px;
+  margin: 8px;
+  transition: all ease 0.3s;
 }
+
+.card-item:hover {
+    transform: translateY(-2px);
+    transform: scale(1.02);
+    background: #eee;
+  }
+  
 
 /* //////*/
 
 .add-project {
-  width: 500px;
+  width: 450px;
 }

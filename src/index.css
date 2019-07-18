@@ -12,8 +12,6 @@ code {
     monospace;
 }
 
-
-
 .d-block {
   display: block;
 }
@@ -42,7 +40,7 @@ code {
   justify-content: space-between;
 }
 
-.justify-content-space-around{
+.justify-content-space-around {
   justify-content: space-around;
 }
 
@@ -55,9 +53,8 @@ code {
 .align-items-flex-end {
   align-items: flex-end;
 }
-.align-content-flex-start{
-  align-content: flex-start
-
+.align-content-flex-start {
+  align-content: flex-start;
 }
 
 .flex-wrap {
@@ -86,4 +83,8 @@ code {
 }
 .flex-8 {
   flex: 8;
+}
+
+.card-title {
+  text-transform: capitalize;
 }
