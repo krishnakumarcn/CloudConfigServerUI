@@ -1,3 +1,25 @@
 .header-title {
   margin-left: 16px;
 }
+
+.body-content {
+  margin: 16px 0 0 16px;
+}
+
+.card-wrap {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 8;
+  margin-top: 10px;
+}
+
+.card-item {
+  margin: 8px 8px 8px 0px;
+}
+
+/* //////*/
+
+.add-project {
+  width: 500px;
+}
