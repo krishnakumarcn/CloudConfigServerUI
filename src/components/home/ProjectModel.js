@@ -4,21 +4,32 @@ import "./projectModel.css";
 import HttpService from "../../services/httpService";
 
 const ProjectModel = () => {
-  const [projectName,setProjectName]= useState("");
-  const[ppm_id,setPpmId]=useState("");
-  const[projectDescription,setProjectDecription]=useState("");
-  const handleProjectNameOnChange = (event) => {
-    setProjectName(event.target.value)
-  }
-  const handlePpmIdOnChange = (event) => {
-    setPpmId(event.target.value)
-  }
-  const handleDescriptionOnChange = (event) => {
-    setProjectDecription(event.target.value)
-  }
-  const handleSubmit =()=>{
-HttpService.post('project',{name:{projectName},ppm_id:{ppm_id},description:{projectDescription}}).then(response).catch(error)
-  }
+  const [projectName, setProjectName] = useState("");
+  const [ppm_id, setPpmId] = useState("");
+  const [projectDescription, setProjectDecription] = useState("");
+  const handleProjectNameOnChange = event => {
+    setProjectName(event.target.value);
+  };
+  const handlePpmIdOnChange = event => {
+    setPpmId(event.target.value);
+  };
+  const handleDescriptionOnChange = event => {
+    setProjectDecription(event.target.value);
+  };
+  const handleSubmit = () => {
+    console.log("submitting");
+    // HttpService.post("project", {
+    //   name: { projectName },
+    //   ppm_id: { ppm_id },
+    //   description: { projectDescription }
+    // })
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  };
   return (
     <div className="project-add-new">
       <Form>
@@ -27,7 +38,13 @@ HttpService.post('project',{name:{projectName},ppm_id:{ppm_id},description:{proj
             Project Name
           </Form.Label>
           <Col sm={8}>
-            <Form.Control type="text" value={projectName} onChange = {(event) => {handleProjectNameOnChange(event);}} />
+            <Form.Control
+              type="text"
+              value={projectName}
+              onChange={event => {
+                handleProjectNameOnChange(event);
+              }}
+            />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -35,7 +52,13 @@ HttpService.post('project',{name:{projectName},ppm_id:{ppm_id},description:{proj
             PPM_ID
           </Form.Label>
           <Col sm={8}>
-            <Form.Control type="text" value={ppm_id} onChange = {(event) => {handlePpmIdOnChange(event);}} />
+            <Form.Control
+              type="text"
+              value={ppm_id}
+              onChange={event => {
+                handlePpmIdOnChange(event);
+              }}
+            />
           </Col>
         </Form.Group>
 
@@ -44,12 +67,25 @@ HttpService.post('project',{name:{projectName},ppm_id:{ppm_id},description:{proj
             Project Description
           </Form.Label>
           <Col sm={8}>
-            <Form.Control type="text"  value={projectDescription} onChange = {(event) => {handleDescriptionOnChange(event);}}/>
+            <Form.Control
+              type="text"
+              value={projectDescription}
+              onChange={event => {
+                handleDescriptionOnChange(event);
+              }}
+            />
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
           <Col sm={{ span: 10, offset: 2 }}>
-            <Button type="submit" onClick={handleSubmit}>Submit</Button>
+            <Button
+              type="submit"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              Submit
+            </Button>
           </Col>
         </Form.Group>
       </Form>
