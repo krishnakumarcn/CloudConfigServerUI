@@ -6,6 +6,9 @@
   margin: 16px 0 0 16px;
 }
 
+.project-view-section{
+    margin-left: 10px;
+}
 .card-wrap {
   cursor: pointer;
   display: flex;
