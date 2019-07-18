@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Card } from "react-bootstrap";
-import Logo from "./../assets/logo-nissan-digital.svg";
+import Logo from "./../../assets/logo-nissan-digital.svg";
 import "./home.css";
-import HttpService from "./../services/httpService";
+import HttpService from "../../services/httpService";
 import ProjectModel from "./ProjectModel";
 
 const getHeaderComponent = () => {
@@ -36,7 +36,9 @@ const Home = props => {
       });
   }, []);
 
-  const gotoProjectInfo = () => {};
+  const gotoProjectInfo = () => {
+    props.history.push("project/${id}");
+  };
   return (
     <>
       {getHeaderComponent()}
@@ -47,7 +49,8 @@ const Home = props => {
             <ProjectModel />
           </div>
         </div>
-        <div>
+        <div className="project-view-section">
+          <div>Projects</div>
           <div className="card-wrap align-items-flex-start align-content-flex-start">
             {projects &&
               projects.map((project, index) => {
