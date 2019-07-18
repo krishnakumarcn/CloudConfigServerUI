@@ -10,6 +10,10 @@ const Home = props => {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
+    getProjects();
+  }, []);
+
+  const getProjects = () => {
     HttpService.get("projects")
       .then(resp => {
         let projects = resp.data;
@@ -18,7 +22,7 @@ const Home = props => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  };
 
   const gotoProjectInfo = id => {
     props.history.push(`project/${id}`);
@@ -28,13 +32,13 @@ const Home = props => {
     <>
       <HeaderComponent props={props} />
       <div className="body-content d-flex">
-        <div className="add-project">
+        <div className="add-project flex-1">
           Add your project
           <div>
-            <ProjectModel  />
+            <ProjectModel refresh={() => {getProjects()}} />
           </div>
         </div>
-        <div className="project-view-section">
+        <div className="project-view-section flex-3">
           <div>Projects</div>
           <div className="card-wrap align-items-flex-start align-content-flex-start">
             {projects &&

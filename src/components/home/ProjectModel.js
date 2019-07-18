@@ -3,10 +3,12 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import "./projectModel.css";
 import HttpService from "../../services/httpService";
 
-const ProjectModel = () => {
+const ProjectModel = props => {
+  console.log(props);
   const [projectName, setProjectName] = useState("");
   const [ppm_id, setPpmId] = useState("");
   const [projectDescription, setProjectDecription] = useState("");
+
   const handleProjectNameOnChange = event => {
     setProjectName(event.target.value);
   };
@@ -16,19 +18,24 @@ const ProjectModel = () => {
   const handleDescriptionOnChange = event => {
     setProjectDecription(event.target.value);
   };
+
   const handleSubmit = () => {
-    console.log("submitting");
-    // HttpService.post("project", {
-    //   name: { projectName },
-    //   ppm_id: { ppm_id },
-    //   description: { projectDescription }
-    // })
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    // const projectName = projectName.toString();
+    // const ppm_id = ppm_id.toString();
+    // const projectDescription = projectDescription.toString();
+
+    let postObj = {
+      name: projectName,
+      ppm_id: ppm_id,
+      description: projectDescription
+    };
+    HttpService.post("project", postObj)
+      .then(response => {
+        props.refresh();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   return (
     <div className="project-add-new">
@@ -79,7 +86,6 @@ const ProjectModel = () => {
         <Form.Group as={Row}>
           <Col sm={{ span: 10, offset: 2 }}>
             <Button
-              type="submit"
               onClick={() => {
                 handleSubmit();
               }}
