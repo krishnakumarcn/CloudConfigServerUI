@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import "./projectModel.css";
 const ProjectModel = () => {
-  //const [projectName,setProjectName]= useState('');
+  const [projectName,setProjectName]= useState('');
   return (
     <div className="project-add-new">
       <Form>
@@ -11,7 +11,7 @@ const ProjectModel = () => {
             Project Name
           </Form.Label>
           <Col sm={8}>
-            <Form.Control type="text" />
+            <Form.Control type="text" value={projectName}/>
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formHorizontalEmail">
