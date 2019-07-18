@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Card } from "react-bootstrap";
-import Logo from "./../../assets/logo-nissan-digital.svg";
+import { Card } from "react-bootstrap";
 import "./home.css";
 import HttpService from "../../services/httpService";
 import ProjectModel from "./ProjectModel";
-
-const getHeaderComponent = () => {
-  return (
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">
-        <img
-          alt=""
-          src={Logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />
-        <span className="header-title">Cloud Config Server</span>
-      </Navbar.Brand>
-    </Navbar>
-  );
-};
+import { withRouter } from "react-router-dom";
+import HeaderComponent from "../header/headerComponent";
 
 const Home = props => {
   const [projects, setProjects] = useState(null);
@@ -36,17 +20,18 @@ const Home = props => {
       });
   }, []);
 
-  const gotoProjectInfo = () => {
-    props.history.push("project/${id}");
+  const gotoProjectInfo = id => {
+    props.history.push(`project/${id}`);
   };
+
   return (
     <>
-      {getHeaderComponent()}
+      <HeaderComponent props={props} />
       <div className="body-content d-flex">
         <div className="add-project">
           Add your project
           <div>
-            <ProjectModel />
+            <ProjectModel  />
           </div>
         </div>
         <div className="project-view-section">
@@ -57,7 +42,7 @@ const Home = props => {
                 return (
                   <div
                     className="card-item"
-                    onClick={gotoProjectInfo}
+                    onClick={() => gotoProjectInfo(project._id)}
                     key={index}
                   >
                     <Card style={{ width: "320px" }}>
@@ -79,4 +64,4 @@ const Home = props => {
   );
 };
 
-export default Home;
+export default withRouter(Home);
